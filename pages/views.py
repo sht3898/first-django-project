@@ -41,3 +41,21 @@ def dinner(request):
         'google_link' : 'https://www.google.com'
         }
     return render(request, 'dinner.html', context)
+
+
+def cube(request, number):
+    context = {
+        'number': number,
+        'number_cube': number ** 3,
+        'numbers' : [1, 2, 3],
+        'students' : {'지수': '지수!', '태수': '태수!'}
+        }
+    return render(request, 'cube.html', context)
+
+
+def about(request, name, age):
+    context = {
+        'name' : name,
+        'age' : age
+    }
+    return render(request, 'about.html', context)

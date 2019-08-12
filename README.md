@@ -121,9 +121,69 @@ templates/__.html : 템플릿 정의
 
 
 
-
-
 ## 1. 시작하기
+
+### 0. 가상환경 실행 + .gitignore
+
+> 가상환경을 사용하는 이유는 프로젝트마다 활용되는 라이브러리가 다르고, 동일한 라이브러리더라도 버전이 다를 수 있다.
+>
+> 따라서, 프로젝트 하면서 라이브러리 삭제 혹은 변경을 하는 것이 아니라 각 프로젝트마다 독립된 가상환경을 부여하여 의존성을 없앤다.
+>
+> 항상 django 실행할 때 마다 가상환경을 활성화 시키는 것을 습관화 하자!
+>
+> 추후에 Data Science/ Machine Learning/ Deep Learning 학습 시에는 anaconda를 활용하기도 한다!
+
+가상환경은 python에서 기본으로 제공하고 있는 [`venv`](https://docs.python.org/ko/3/tutorial/venv.html)를 활용한다. (python 3.5+)
+
+1. 가상환경 생성
+
+   원하는 디렉토리에서 아래의 명령어를 입력한다.
+
+   ```bash
+   $ python -m venv __venv__
+   ```
+
+   - `__venv__` 여기에 가상환경 이름을 작성하는데, 보통 `venv`라고 설정한다.
+   - `__venv__` 폴더가 생성되는데, 구조는 다음과 같다.
+     - `Lib` : 가상환경에 설치된 라이브러리 모음.
+     - `Scripts`: 가상환경 실행과 관련된 파일
+
+2. 가상환경 실행
+
+   ```bash
+   $ ls
+   venv ... # venv 폴더가 반드시 있어야 함
+   
+   $ source venv/Scripts/activate
+   (venv)
+   $ python -V
+   Python 3.7.4
+   ```
+
+   - 반드시 해당 명령어는 `venv` 폴더가 있는 곳에서 실행시킨다.
+   - **`bash shell`에서는 `activate` 파일을 실행하여야 한다.**
+     - `cmd` : `activate.bat`
+     - `power shell` : `activate.psl`
+
+3. 가상환경 종료
+
+   ```bash
+   $ deactivate
+   ```
+
+4. `.gitignore` 등록
+
+   ```shell
+   venv/
+   ```
+
+   - 추가적으로 visual studio code를 활용하는 경우에는 `.vscode/`
+   - python 환경에서는 `__pycache__/`
+   - pycharm 환경에서는 `.idea/`
+
+   위의 폴더들은 `.gitignore`에 등록하는 습관을 가지자! 잘 모르겠으면 [gitignore.io](https://gitignore.io)에서 찾아서 복사하자 :)
+   
+5. django 설치
 
 ```bash
 $ pip install django
@@ -133,6 +193,8 @@ $ pip install django
   * python 3.7.4
   * django 2.2.4
 
+
+
 ### 1. Django 프로젝트 시작
 
 ```bash
@@ -141,9 +203,9 @@ $ cd __프로젝트 이름 or 폴더 이름__
 ```
 
 ```bash
-$ django-admin startproject __프로젝트이름__ .
+$ django-admin startproject __프로젝트이름__ . # 점 반듯이 써야함
 ```
-프로젝트 이름 뒤에 뛰어 쓰기를 하고 점(.)을 써야함.
+**프로젝트 이름 뒤에 뛰어 쓰기를 하고 점(.)을 써야함.**
 
 * 프로젝트 이름으로 구성된 폴더와, manage.py가 생성된다.
   * `__init__.py` : 해당 폴더가 패키지로 인식될 수 있게끔 작성되는 파일
@@ -159,10 +221,6 @@ $ python manage.py runserver
 ```
 
 * `localhost:8000` 으로 들어가서 로켓 확인!
-
-
-
-
 
 
 
@@ -204,7 +262,11 @@ INSTALLED_APPS = [
 #..
 ```
 
+
+
 ## 2. 작성 흐름
+
+![1565592342687](./images/1.png)
 
 ### 1. URL 정의
 
