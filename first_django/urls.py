@@ -14,26 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 # 1. url 설정
 # pages app의 views.py 파일 불러오기
-from pages import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # 1. url 설정
-    # path(url, 해당하는 views의 함수)
-    path('', views.index),
-    # variable routing
-    # url의 특정 값을 변수처럼 활용
-    path('hello/<str:name>/', views.hello),
-    path('lotto/', views.lotto),
-    path('dinner/', views.dinner),
-    path('cube/<int:number>/', views.cube),
-    path('about/<str:name>/<int:age>/', views.about),
-    path('isitgwangbok/', views.isitgwangbok),
-    path('ping/', views.ping),
-    path('pong/', views.pong),
-    path('signup/', views.signup),
-    path('signup_result/', views.signup_result),
+    # 각 앱 별로 따로 urls.py를 정의하여 관리함.
+    path('pages/', include('pages.urls')), # django.urls에서 include를 가져옴
+    path('services/', include('services.urls')),
 ]
