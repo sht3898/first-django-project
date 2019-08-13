@@ -28,7 +28,9 @@ Opinionated(다소 독선적)
 
 ## Dynamic Web
 
+**서버사이드 동적 웹페이지**(server-side dynamic web page)는 서버사이드 스크립트를 처리하는 [애플리케이션 서버](https://ko.wikipedia.org/wiki/애플리케이션_서버)에 의해 통제되는 구조의 [웹페이지](https://ko.wikipedia.org/wiki/웹페이지)이다. 서버 사이드 스크립트에서 파라미터는 클라이언트 사이드 처리의 구성을 포함하여, 새로운 모든 웹 페이지의 조합이 어떻게 처리되는지를 결정한다.
 
+**클라이언트 사이드 동적 웹페이지**(client-side dynamic web page)는 로드될 때 브라우저에서 실행되는 [HTML 스크립트](https://ko.wikipedia.org/w/index.php?title=HTML_스크립트&action=edit&redlink=1)를 사용하여 웹 페이지를 처리한다. 자바스크립트와 다른 스크립트 언어들은 수신된 페이지의 HTML이 [문서 객체 모델](https://ko.wikipedia.org/wiki/문서_객체_모델)(DOM)로 구문 분석하는 방식을 결정하며 로드되는 웹 페이지를 표출한다. 동일한 클라이언트 사이드 기법들이 동일한 방식으로 DOM을 동적으로 업데이트하거나 변경한다.
 
 
 
@@ -39,69 +41,6 @@ Model : 데이터를 관리
 Template : 사용자가 보는 화면
 
 View : 중간 관리자
-
-
-
-## 가상환경 생성
-
-git bash에서
-
-```bash
-python -m venv 가상환경이름
-```
-
-venv  폴더 ignore 처리
-
-```bash
-vi .gitignore
-
-venv/
-```
-
-활성화
-
-```bash
-source venv/Scripts/activate
-```
-
-잔고 설치
-
-```bash
-pip install django
-```
-
-설치여부 확인
-
-```bash
-pip list
-```
-
-pip 업그레이드
-
-```bash
-python -m pip install --upgrade pip
-```
-
-
-
-여기까지 했었는데 다시 deactive 하고 설치
-
-```bash
-deactivate
-venv
-pip install django
-python -m pip install -upgrade pip
-```
-
-django 프로젝트 시작
-
-```bash
-django-admin startproject first_django .
-
-python manage.py runserver
-```
-
-localhost:8000 을 입력하여 실행
 
 
 
@@ -317,4 +256,91 @@ $ python manage.py runserver
 ```
 
 `localhost:8000` 에서 확인해보자!
+
+
+
+## 3. 정리
+
+### 1) 폴더 만들고
+
+mkdir __
+
+
+
+### 2) 가상환경 만들고
+
+
+
+python -m venv venv
+
+2-1) .gitignore에 venv/ 추가
+
+
+
+### 3) 가상환경 실행 후
+
+source venv/Scripts/activate
+
+
+
+### 4) 원하는 django 버전 설치
+
+pip install django
+
+
+
+### 5) 프로젝트 생성
+
+django-admin startproject __
+
+
+
+### 6) app 생성 및 등록
+
+
+
+### 7) url 설정
+
+
+
+### 8) views.py 설정
+
+
+
+### 9) templates 설정
+
+
+
+### 10) 서버 실행
+
+
+
+
+
+## Tip
+
+### 단축키 입력
+
+```bash
+source venv/Scripts/activate
+```
+
+ 매번 입력하기 번거로우므로 vi ~/.bashrc 를 통하여 줄이기를 한다
+
+**bashrc 작성시에 띄어쓰기 있으면 안됨**
+
+```bash
+vi ~/.bashrc
+```
+
+```txt
+alias jn='jupyter notebook'
+alias venv="source ~/python-virtualenv/3.7.4/Scripts/activate"
+venv
+alias activate="source venv/Scripts/activate"
+```
+
+위의 것을 입력하고 `esc`+`:wq`를 통해 저장하고 빠져나온다.
+
+줄임말 실행전 `source ~/.bashrc` 를 통해 한번 실행하고 `activate`를 실행하면  `source venv/Scripts/activate` 를 입력한 것과 같은 효과가 난다.
 

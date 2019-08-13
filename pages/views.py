@@ -59,3 +59,45 @@ def about(request, name, age):
         'age' : age
     }
     return render(request, 'about.html', context)
+
+def isitgwangbok(request):
+    now = datetime.datetime.now()
+    if now.month == 8 and now.day == 15:
+        result = True
+    else:
+        result = False
+    context = {
+        'result' : result
+    }
+    return render(request, 'isitgwangbok.html', context)
+
+def ping(request):
+    return render(request, 'ping.html')
+
+def pong(request):
+    # 사용자가 넘겨주는 값 받아오기
+    print(request.GET) 
+    # QueryDict 일종의 딕셔너리
+    # {'data' : '안녕하세요'} 이런 형식으로 저장되어 있음
+    data = request.GET.get('data')
+    context = {
+        'data': data
+    }
+    return render(request, 'pong.html', context)
+
+def signup(request):
+    return render(request, 'signup.html')
+
+def signup_result(request):
+    id = request.POST.get('id')
+    pw = request.POST.get('pw')
+    pwcon = request.POST.get('pwcon')
+    if pw == pwcon:
+        is_signup = True
+    else:
+        is_signup = False
+    context = {
+        'is_signup' : is_signup,
+        'id' : id
+    }
+    return render(request, 'signup_result.html', context)

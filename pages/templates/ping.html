@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <form action="/pong/">
+    <!-- 
+      action : 요청을 어디로 보낼지 설정
+     -->
+    <label for="data">내용: </label>
+    <!-- 
+    name: 사용자 입력값을 어떠한 변수명으로 담아서 보낼지 
+    name="data"이기 때문에 data라는 이름으로 views에 dict 형태로 저장
+  -->
+    <input id="data" type="text" name="data"> 
+    <input type="submit" value="제출!">
+  </form>
+</body>
+</html>
