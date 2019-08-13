@@ -259,5 +259,112 @@ h1 {
 
 {% block __ %}로 생성해서 {% endblock %} 으로 끝냄
 
+* **html 이면 주소 앞에 / 붙이고, py이면 주소 앞에 / 붙이지 않는다.**
 
+
+
+## Artii 글자 생성하기
+
+### 1) url 정의
+
+```python
+# first_django/services/urls.py
+
+from django.urls import path
+from . import views
+
+
+urlpatterns = [
+    path('', views.index),
+    
+    path('artii/', views.artii),
+    path('artii_result/', views.artii_result),
+]
+```
+
+
+
+### 2) View 정의
+
+```python
+# first_django/services/views.py
+
+from django.shortcuts import render
+import requests
+
+...
+
+def artii(request):
+    return render(request, 'services/artii.html')
+
+    
+def artii_result(request):
+    name = request.GET.get('name')
+    font = request.GET.get('font')
+    url = f'http://artii.herokuapp.com/make?text={name}&font={font}'
+    response = requests.get(url).text
+    # requests.get(url)만 하면 <response[200]>이라는 이상한 결과가 나오기 때문에 뒤에 .text를 붙여 text형태로 만들어서 저정한다.
+    context = {
+        'response' : response
+    }
+    return render(request, 'services/artii_result.html', context)
+```
+
+
+
+### 3) 템플릿 정의
+
+#### (1) artii.html
+
+```html
+<!-- services/templates/services/artii.html -->
+
+...
+<body>
+  <form action="/services/artii_result/">
+    <label for="name">이름: </label>
+    <input id="name" type="text" name="name"><br>
+    <label for="font">폰트: </label>
+    <!-- select를 통해 여러 항목 중 선택 가능하게 함 -->
+    <select name="font" id="font">
+      <option value="rounded">rounded</option>
+      <option value="acrobatic">acrobatic</option>
+      <option value="alligator">alligator</option>
+      <option value="short">short</option>
+      <option value="type_set">type_set</option>
+    </select>
+    <input type="submit" value="제출">
+  </form>
+</body>
+...
+```
+
+
+
+#### (2) artii_result.html
+
+```html
+<!-- services/templates/services/artii_result.html -->
+
+...
+<body>
+  <pre>{{ response }}</pre>
+  <!-- pre 태그는 입력한 형태 그대로 보여줌 -->
+  <br>
+  <a href="/services/artii/">돌아가기</a>
+</body>
+...
+```
+
+
+
+### 4) 결과
+
+#### (1) artii.html
+
+![1565680338364](./images/3.png)
+
+#### (2) artii_result.html
+
+![1565680400286](./images/4.png)
 
