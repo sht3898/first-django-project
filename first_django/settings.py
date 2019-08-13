@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+# django는 같은 파일이라면 INSTALLED_APPS에 등록된 순서대로 찾음
 INSTALLED_APPS = [
     'pages', # app 등록
     'services',
