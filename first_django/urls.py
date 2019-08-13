@@ -24,4 +24,5 @@ urlpatterns = [
     # 각 앱 별로 따로 urls.py를 정의하여 관리함.
     path('pages/', include('pages.urls')), # django.urls에서 include를 가져옴
     path('services/', include('services.urls')),
+    path('num/', include('num.urls'))
 ]
