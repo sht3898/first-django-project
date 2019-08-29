@@ -79,7 +79,7 @@ templates/__.html : 템플릿 정의
    원하는 디렉토리에서 아래의 명령어를 입력한다.
 
    ```bash
-   $ python -m venv __venv__
+   $ python -m venv __venv__ # __ 뺴고 써야함
    ```
 
    - `__venv__` 여기에 가상환경 이름을 작성하는데, 보통 `venv`라고 설정한다.
