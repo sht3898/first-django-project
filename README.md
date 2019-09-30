@@ -142,7 +142,7 @@ $ cd __프로젝트 이름 or 폴더 이름__
 ```
 
 ```bash
-$ django-admin startproject __프로젝트이름__ . # 점 반듯이 써야함
+$ django-admin startproject __프로젝트이름__ . # 점 반드시 써야함
 ```
 **프로젝트 이름 뒤에 뛰어 쓰기를 하고 점(.)을 써야함.**
 
